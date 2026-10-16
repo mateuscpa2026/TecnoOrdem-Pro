@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">TecnoOrdem Pro</string>
+    <string name="app_slogan">Sua assistência técnica, sob controle.</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Início</string>
+    <string name="nav_orders">Ordens</string>
+    <string name="nav_customers">Clientes</string>
+    <string name="nav_inventory">Estoque</string>
+    <string name="nav_financial">Financeiro</string>
+    <string name="nav_reports">Relatórios</string>
+    <string name="nav_settings">Empresa</string>
+
+    <!-- General Actions -->
+    <string name="action_save">Salvar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_delete">Excluir</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_search">Pesquisar</string>
+    <string name="action_filter">Filtrar</string>
+    <string name="action_share">Compartilhar</string>
+    <string name="action_share_whatsapp">Compartilhar via WhatsApp</string>
+    <string name="action_print">Imprimir Documento</string>
+    <string name="action_generate_pdf">Gerar PDF</string>
+    <string name="action_view_pdf">Visualizar PDF</string>
+    <string name="action_new_order">Nova Ordem de Serviço</string>
+    <string name="action_new_customer">Novo Cliente</string>
+    <string name="action_new_equipment">Novo Equipamento</string>
+    <string name="action_new_part">Nova Peça</string>
+    <string name="action_new_transaction">Nova Transação</string>
+    <string name="action_duplicate_order">Duplicar Ordem</string>
+    <string name="action_confirm">Confirmar</string>
+    <string name="action_preview">Pré-visualizar</string>
+
+    <!-- Statuses -->
+    <string name="status_open">Aberta</string>
+    <string name="status_screening">Em triagem</string>
+    <string name="status_diagnosis">Em diagnóstico</string>
+    <string name="status_awaiting_approval">Aguardando aprovação</string>
+    <string name="status_awaiting_parts">Aguardando peças</string>
+    <string name="status_in_repair">Em reparo</string>
+    <string name="status_testing">Em testes</string>
+    <string name="status_completed">Concluída</string>
+    <string name="status_ready_pickup">Pronta para retirada</string>
+    <string name="status_delivered">Entregue</string>
+    <string name="status_cancelled">Cancelada</string>
+
+    <!-- CDC & Warranties -->
+    <string name="warranty_legal_cdc">Garantia Legal (Art. 26 CDC - 90 dias)</string>
+    <string name="warranty_contractual">Garantia Contratual da Assistência</string>
+    <string name="warranty_parts">Garantia de Peça Substituída</string>
+    <string name="warranty_service">Garantia de Mão de Obra</string>
+
+    <!-- Equipment Types -->
+    <string name="equip_smartphone">Smartphone / Celular</string>
+    <string name="equip_notebook">Notebook / Laptop</string>
+    <string name="equip_computer">Computador / Desktop</string>
+    <string name="equip_tablet">Tablet</string>
+    <string name="equip_printer">Impressora</string>
+    <string name="equip_tv">Televisor / Smart TV</string>
+    <string name="equip_console">Videogame / Console</string>
+    <string name="equip_appliance">Eletrodoméstico</string>
+    <string name="equip_other">Outro Equipamento</string>
+
+    <!-- Payment Methods -->
+    <string name="pay_pix">Pix</string>
+    <string name="pay_cash">Dinheiro</string>
+    <string name="pay_debit_card">Cartão de Débito</string>
+    <string name="pay_credit_card">Cartão de Crédito</string>
+    <string name="pay_transfer">Transferência Bancária</string>
+    <string name="pay_other">Outro</string>
+
+    <!-- Messages -->
+    <string name="msg_order_created">Ordem de serviço salva com sucesso!</string>
+    <string name="msg_customer_saved">Cliente salvo com sucesso!</string>
+    <string name="msg_part_saved">Peça de estoque atualizada!</string>
+    <string name="msg_transaction_saved">Transação financeira registrada!</string>
+    <string name="msg_pdf_generated">Documento PDF gerado com sucesso!</string>
+    <string name="msg_confirm_delete">Tem certeza que deseja excluir este registro?</string>
+</resources>

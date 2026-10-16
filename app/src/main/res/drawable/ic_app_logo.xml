@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- 1. Background: Deep Royal & Navy Blue Squircle with 3D Depth -->
+    <path
+        android:pathData="M48,6 C16,6 6,16 6,48 L6,152 C6,184 16,194 48,194 L152,194 C184,194 194,184 194,152 L194,48 C194,16 184,6 152,6 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="12"
+                android:startY="12"
+                android:endX="188"
+                android:endY="188"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#0B42E0" />
+                <item android:offset="0.45" android:color="#02123F" />
+                <item android:offset="0.8" android:color="#010A24" />
+                <item android:offset="1.0" android:color="#0035B8" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top-Left Glossy Highlight Arc -->
+    <path
+        android:pathData="M6,52 C6,24 24,6 52,6 C78,6 80,12 50,38 C22,64 12,94 10,128 C8,102 6,76 6,52 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="6"
+                android:startY="6"
+                android:endX="60"
+                android:endY="90"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#500072FF" />
+                <item android:offset="1.0" android:color="#00004BD8" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Bottom-Right Subtle Glow Accent Arc -->
+    <path
+        android:pathData="M148,194 C176,194 194,176 194,148 C194,122 188,120 166,142 C144,164 116,182 88,190 C110,192 130,194 148,194 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="140"
+                android:startY="140"
+                android:endX="194"
+                android:endY="194"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#00003099" />
+                <item android:offset="1.0" android:color="#450058F5" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Soft Drop Shadow Under Central Clipboard & Gear -->
+    <path
+        android:pathData="M60,48 L130,48 C137,48 144,53 144,60 L144,112 C144,119 137,124 130,124 L60,124 C53,124 48,119 48,112 L48,60 C48,53 53,48 60,48 Z"
+        android:fillColor="#35000000" />
+    <path
+        android:pathData="M116,80 A24,24 0 1,0 156,120 A24,24 0 1,0 116,80"
+        android:fillColor="#25000000" />
+
+    <!-- === CLIPBOARD (Prancheta Branca) === -->
+    <!-- Clipboard Fill (Deep Dark Blue interior) -->
+    <path
+        android:fillColor="#041238"
+        android:pathData="M64,40 L130,40 C135,40 138,43 138,48 L138,110 C138,115 135,118 130,118 L64,118 C59,118 56,115 56,110 L56,48 C56,43 59,40 64,40 Z" />
+
+    <!-- Clipboard Border Outline -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M64,40 L130,40 C135,40 138,43 138,48 L138,110 C138,115 135,118 130,118 L64,118 C59,118 56,115 56,110 L56,48 C56,43 59,40 64,40 Z" />
+
+    <!-- Top Clip Bracket -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M83,32 C83,28.5 85.8,26 89.2,26 L108.8,26 C112.2,26 115,28.5 115,32 L119,38 C119,41 117,43 114,43 L84,43 C81,43 79,41 79,38 Z" />
+
+    <!-- Top Clip Central Hole -->
+    <path
+        android:fillColor="#02123F"
+        android:pathData="M99,31 A3.5,3.5 0 1,0 99,38 A3.5,3.5 0 1,0 99,31" />
+
+    <!-- Checklist Item 1: Cyan Checkmark + White Line -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#00D2FF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M69,57 L74,62 L83,53" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M91,57 L123,57" />
+
+    <!-- Checklist Item 2: Cyan Checkmark + White Line -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#00D2FF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M69,73 L74,78 L83,69" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M91,73 L123,73" />
+
+    <!-- Checklist Item 3: Cyan Checkmark + White Line -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#00D2FF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M69,89 L74,94 L83,85" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M91,89 L111,89" />
+
+    <!-- === MECHANICAL GEAR (Engrenagem Ciano Sobreposta) === -->
+    <group
+        android:translateX="134"
+        android:translateY="95">
+        <!-- 8-tooth gear body with center hole -->
+        <path
+            android:pathData="M-5,-22 L5,-22 L6.2,-17.5 C8.2,-16.7 10.1,-15.6 11.8,-14.3 L16.4,-16.6 L22.4,-10.6 L20.1,-6 C21.4,-4.3 22.5,-2.4 23.3,-0.4 L27.8,0.8 L27.8,9.8 L23.3,11 C22.5,13 21.4,14.9 20.1,16.6 L22.4,21.2 L16.4,27.2 L11.8,24.9 C10.1,26.2 8.2,27.3 6.2,28.1 L5,32.6 L-5,32.6 L-6.2,28.1 C-8.2,27.3 -10.1,26.2 -11.8,24.9 L-16.4,27.2 L-22.4,21.2 L-20.1,16.6 C-21.4,14.9 -22.5,13 -23.3,11 L-27.8,9.8 L-27.8,0.8 L-23.3,-0.4 C-22.5,-2.4 -21.4,-4.3 -20.1,-6 L-22.4,-10.6 L-16.4,-16.6 L-11.8,-14.3 C-10.1,-15.6 -8.2,-16.7 -6.2,-17.5 Z M0,-6.5 A11.5,11.5 0 1,0 0,16.5 A11.5,11.5 0 1,0 0,-6.5">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:startX="-20"
+                    android:startY="-20"
+                    android:endX="25"
+                    android:endY="25"
+                    android:type="linear">
+                    <item android:offset="0.0" android:color="#00D2FF" />
+                    <item android:offset="1.0" android:color="#0066FF" />
+                </gradient>
+            </aapt:attr>
+        </path>
+    </group>
+
+    <!-- === TEXT: "TECNO" (White Bold) === -->
+    <!-- T -->
+    <path android:fillColor="#FFFFFF" android:pathData="M31,130 L49,130 L49,135 L43,135 L43,148 L37,148 L37,135 L31,135 Z" />
+    <!-- E -->
+    <path android:fillColor="#FFFFFF" android:pathData="M53,130 L68,130 L68,134.5 L59,134.5 L59,136.5 L66.5,136.5 L66.5,141 L59,141 L59,143.5 L68.5,143.5 L68.5,148 L53,148 Z" />
+    <!-- C -->
+    <path android:fillColor="#FFFFFF" android:pathData="M84,134 C81.5,131.5 77.5,130 73.5,130 C66.5,130 61.5,135 61.5,139 C61.5,143 66.5,148 73.5,148 C77.5,148 81.5,146.5 84,144 L80.8,140.5 C78.8,142.5 76.2,143.5 73.5,143.5 C69.5,143.5 67,141.5 67,139 C67,136.5 69.5,134.5 73.5,134.5 C76.2,134.5 78.8,135.5 80.8,137.5 Z" />
+    <!-- N -->
+    <path android:fillColor="#FFFFFF" android:pathData="M88,130 L94,130 L102.5,141.5 L102.5,130 L107.5,130 L107.5,148 L102,148 L93.5,136.5 L93.5,148 L88,148 Z" />
+    <!-- O -->
+    <path android:fillColor="#FFFFFF" android:pathData="M118,130 C111.5,130 106.5,135 106.5,139 C106.5,143 111.5,148 118,148 C124.5,148 129.5,143 129.5,139 C129.5,135 124.5,130 118,130 Z M118,134.5 C121.5,134.5 124,136.5 124,139 C124,141.5 121.5,143.5 118,143.5 C114.5,143.5 112,141.5 112,139 C112,136.5 114.5,134.5 118,134.5 Z" />
+
+    <!-- === TEXT: "ORDEM" (Electric Cyan & Blue Gradient) === -->
+    <!-- O -->
+    <path
+        android:pathData="M31,154 C24,154 19,159 19,164 C19,169 24,174 31,174 C38,174 43,169 43,164 C43,159 38,154 31,154 Z M31,158.5 C35,158.5 37.5,160.8 37.5,164 C37.5,167.2 35,169.5 31,169.5 C27,169.5 24.5,167.2 24.5,164 C24.5,160.8 27,158.5 31,158.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="19" android:startY="154" android:endX="43" android:endY="174" android:type="linear">
+                <item android:offset="0.0" android:color="#00D2FF" />
+                <item android:offset="1.0" android:color="#0077FF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- R -->
+    <path
+        android:pathData="M46,154 L56.5,154 C60,154 62.5,156 62.5,159 C62.5,161.5 61,163 58.5,163.5 L63.5,174 L57.8,174 L53.3,164 L51.5,164 L51.5,174 L46,174 Z M51.5,158.5 L51.5,160.5 L56,160.5 C57,160.5 58,160 58,159.5 C58,159 57,158.5 56,158.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="46" android:startY="154" android:endX="63.5" android:endY="174" android:type="linear">
+                <item android:offset="0.0" android:color="#00D2FF" />
+                <item android:offset="1.0" android:color="#0077FF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- D -->
+    <path
+        android:pathData="M66,154 L75.5,154 C81.5,154 85.5,158 85.5,164 C85.5,170 81.5,174 75.5,174 L66,174 Z M71.5,158.5 L71.5,169.5 L75,169.5 C78,169.5 80,167 80,164 C80,161 78,158.5 75,158.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="66" android:startY="154" android:endX="85.5" android:endY="174" android:type="linear">
+                <item android:offset="0.0" android:color="#00D2FF" />
+                <item android:offset="1.0" android:color="#0077FF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- E -->
+    <path
+        android:pathData="M89,154 L102.5,154 L102.5,158.5 L94.5,158.5 L94.5,161.5 L101.5,161.5 L101.5,166 L94.5,166 L94.5,169.5 L103,169.5 L103,174 L89,174 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="89" android:startY="154" android:endX="103" android:endY="174" android:type="linear">
+                <item android:offset="0.0" android:color="#00D2FF" />
+                <item android:offset="1.0" android:color="#0077FF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- M -->
+    <path
+        android:pathData="M106,154 L112.5,154 L118,165.5 L123.5,154 L130,154 L130,174 L125,174 L125,162 L120,172 L116,172 L111,162 L111,174 L106,174 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="106" android:startY="154" android:endX="130" android:endY="174" android:type="linear">
+                <item android:offset="0.0" android:color="#00D2FF" />
+                <item android:offset="1.0" android:color="#0077FF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- === PILL BADGE: "PRO" === -->
+    <!-- Pill Background (Bright Cyan) -->
+    <path
+        android:pathData="M136,154.5 L174,154.5 C178,154.5 181,157.5 181,161.5 L181,166.5 C181,170.5 178,173.5 174,173.5 L136,173.5 C132,173.5 129,170.5 129,166.5 L129,161.5 C129,157.5 132,154.5 136,154.5 Z"
+        android:fillColor="#00B8FF" />
+
+    <!-- Text: P -->
+    <path android:fillColor="#FFFFFF" android:pathData="M137.5,158 L143.5,158 C145.5,158 147,159 147,161 C147,163 145.5,164 143.5,164 L140.5,164 L140.5,170 L137.5,170 Z M140.5,160.5 L140.5,162 L143,162 C143.8,162 144.3,161.7 144.3,161 C144.3,160.3 143.8,160.5 143,160.5 Z" />
+    <!-- Text: R -->
+    <path android:fillColor="#FFFFFF" android:pathData="M149,158 L155,158 C157,158 158.5,159 158.5,161 C158.5,162.2 157.8,163 156.5,163.5 L159,170 L156,170 L153.8,164 L152,164 L152,170 L149,170 Z M152,160.5 L152,162 L154.5,162 C155.2,162 155.8,161.7 155.8,161 C155.8,160.3 155.2,160.5 154.5,160.5 Z" />
+    <!-- Text: O -->
+    <path android:fillColor="#FFFFFF" android:pathData="M165,158 C161.5,158 159.5,160.5 159.5,164 C159.5,167.5 161.5,170 165,170 C168.5,170 170.5,167.5 170.5,164 C170.5,160.5 168.5,158 165,158 Z M165,160.5 C166.8,160.5 167.8,161.8 167.8,164 C167.8,166.2 166.8,167.5 165,167.5 C163.2,167.5 162.2,166.2 162.2,164 C162.2,161.8 163.2,160.5 165,160.5 Z" />
+
+</vector>

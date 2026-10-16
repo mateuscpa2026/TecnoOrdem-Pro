@@ -1,0 +1,6 @@
+{
+  "name": "TecnoOrdem Pro",
+  "description": "Aplicativo Android profissional para gestão completa de assistências técnicas: ordens de serviço, clientes, equipamentos, orçamentos, garantias (CDC), estoque, financeiro, relatórios e geração de PDFs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

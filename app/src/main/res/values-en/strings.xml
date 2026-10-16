@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">TecnoOrdem Pro</string>
+    <string name="app_slogan">Your repair shop, in full control.</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_orders">Work Orders</string>
+    <string name="nav_customers">Customers</string>
+    <string name="nav_inventory">Inventory</string>
+    <string name="nav_financial">Financial</string>
+    <string name="nav_reports">Reports</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- General Actions -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_search">Search</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_share">Share</string>
+    <string name="action_share_whatsapp">Share via WhatsApp</string>
+    <string name="action_print">Print Document</string>
+    <string name="action_generate_pdf">Generate PDF</string>
+    <string name="action_view_pdf">View PDF</string>
+    <string name="action_new_order">New Work Order</string>
+    <string name="action_new_customer">New Customer</string>
+    <string name="action_new_equipment">New Equipment</string>
+    <string name="action_new_part">New Part</string>
+    <string name="action_new_transaction">New Transaction</string>
+    <string name="action_duplicate_order">Duplicate Order</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_preview">Preview</string>
+
+    <!-- Statuses -->
+    <string name="status_open">Open</string>
+    <string name="status_screening">In Triage</string>
+    <string name="status_diagnosis">In Diagnosis</string>
+    <string name="status_awaiting_approval">Awaiting Approval</string>
+    <string name="status_awaiting_parts">Awaiting Parts</string>
+    <string name="status_in_repair">In Repair</string>
+    <string name="status_testing">Testing</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_ready_pickup">Ready for Pickup</string>
+    <string name="status_delivered">Delivered</string>
+    <string name="status_cancelled">Cancelled</string>
+
+    <!-- Warranties -->
+    <string name="warranty_legal_cdc">Statutory Warranty (90 days)</string>
+    <string name="warranty_contractual">Contractual Shop Warranty</string>
+    <string name="warranty_parts">Replacement Part Warranty</string>
+    <string name="warranty_service">Labor &amp; Service Warranty</string>
+
+    <!-- Equipment Types -->
+    <string name="equip_smartphone">Smartphone / Phone</string>
+    <string name="equip_notebook">Notebook / Laptop</string>
+    <string name="equip_computer">Desktop Computer</string>
+    <string name="equip_tablet">Tablet</string>
+    <string name="equip_printer">Printer</string>
+    <string name="equip_tv">Television / Smart TV</string>
+    <string name="equip_console">Gaming Console</string>
+    <string name="equip_appliance">Home Appliance</string>
+    <string name="equip_other">Other Equipment</string>
+
+    <!-- Payment Methods -->
+    <string name="pay_pix">Pix</string>
+    <string name="pay_cash">Cash</string>
+    <string name="pay_debit_card">Debit Card</string>
+    <string name="pay_credit_card">Credit Card</string>
+    <string name="pay_transfer">Bank Transfer</string>
+    <string name="pay_other">Other</string>
+
+    <!-- Messages -->
+    <string name="msg_order_created">Work order saved successfully!</string>
+    <string name="msg_customer_saved">Customer saved successfully!</string>
+    <string name="msg_part_saved">Inventory part updated!</string>
+    <string name="msg_transaction_saved">Financial transaction recorded!</string>
+    <string name="msg_pdf_generated">PDF document generated successfully!</string>
+    <string name="msg_confirm_delete">Are you sure you want to delete this record?</string>
+</resources>
