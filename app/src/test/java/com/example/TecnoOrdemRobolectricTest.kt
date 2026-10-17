@@ -178,4 +178,94 @@ class TecnoOrdemRobolectricTest {
         assertEquals("TecnoMaster Reparos", current.tradeName)
         assertEquals("financeiro@tecnomaster.com", current.pixKey)
     }
+
+    @Test
+    fun testDataStorePreferencesPersistence() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val dataStore = com.example.data.preferences.AppPreferencesDataStore(context)
+
+        dataStore.setAppLanguage("es")
+        dataStore.setCompanyLogoUri("file:///data/user/0/logo_test.png")
+        dataStore.setHasSelectedInitialLanguage(true)
+
+        val prefs = dataStore.userPreferencesFlow.first()
+        assertEquals("es", prefs.appLanguage)
+        assertEquals("file:///data/user/0/logo_test.png", prefs.companyLogoUri)
+        assertTrue(prefs.hasSelectedInitialLanguage)
+
+        // Clear logo
+        dataStore.clearCompanyLogo()
+        val updatedPrefs = dataStore.userPreferencesFlow.first()
+        assertEquals("", updatedPrefs.companyLogoUri)
+    }
+
+    @Test
+    fun testWorkOrdersRoomRelationsAndCascade() = runBlocking {
+        // 1. Create Customer
+        val customerId = repository.saveCustomer(
+            Customer(
+                name = "Fernando Mendes",
+                documentNumber = "789.456.123-00",
+                phone = "(11) 91234-5678",
+                city = "Campinas",
+                state = "SP"
+            )
+        )
+        assertTrue(customerId > 0)
+
+        // 2. Create Equipment linked to Customer via foreignKey
+        val equipId = repository.saveEquipment(
+            Equipment(
+                customerId = customerId,
+                type = EquipmentType.NOTEBOOK,
+                brand = "Lenovo",
+                model = "ThinkPad T14",
+                serialNumberOrImei = "PF-998822"
+            )
+        )
+        assertTrue(equipId > 0)
+
+        // 3. Create WorkOrder linked to Customer and Equipment
+        val order = WorkOrder(
+            orderNumber = 2001,
+            customerId = customerId,
+            equipmentId = equipId,
+            status = OrderStatus.OPEN,
+            reportedDefect = "Tela piscando ao mover tampa",
+            laborPrice = 150.0,
+            partsPrice = 300.0,
+            totalAmount = 450.0,
+            remainingBalance = 450.0
+        )
+        val orderId = repository.saveWorkOrder(order)
+        assertTrue(orderId > 0)
+
+        // 4. Assert WorkOrderWithDetails relation mapping
+        val details = repository.getOrderWithDetailsByIdSync(orderId)
+        assertNotNull(details)
+        assertEquals("Fernando Mendes", details?.customer?.name)
+        assertEquals("ThinkPad T14", details?.equipment?.model)
+        assertEquals(2001L, details?.workOrder?.orderNumber)
+
+        // 5. Assert CustomerWithDetails relation mapping
+        val customerDetails = repository.getCustomerWithDetailsSync(customerId)
+        assertNotNull(customerDetails)
+        assertEquals(1, customerDetails?.equipments?.size)
+        assertEquals("Lenovo", customerDetails?.equipments?.first()?.brand)
+        assertEquals(1, customerDetails?.workOrders?.size)
+        assertEquals(2001L, customerDetails?.workOrders?.first()?.orderNumber)
+
+        // 6. Test Cascading Deletion: deleting customer cleans up linked equipment and work orders
+        val customer = repository.getCustomerByIdSync(customerId)
+        assertNotNull(customer)
+        repository.deleteCustomer(customer!!)
+
+        // Verify entities were cascaded
+        val orderAfterDelete = repository.getOrderByIdSync(orderId)
+        assertEquals(null, orderAfterDelete)
+        val equipAfterDelete = repository.getEquipmentByIdSync(equipId)
+        assertEquals(null, equipAfterDelete)
+        val customerAfterDelete = repository.getCustomerByIdSync(customerId)
+        assertEquals(null, customerAfterDelete)
+    }
 }

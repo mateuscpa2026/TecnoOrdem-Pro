@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.data.model.Customer
+import com.example.data.model.CustomerWithDetails
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -19,6 +20,14 @@ interface CustomerDao {
 
     @Query("SELECT * FROM customers WHERE id = :id LIMIT 1")
     suspend fun getCustomerByIdSync(id: Long): Customer?
+
+    @androidx.room.Transaction
+    @Query("SELECT * FROM customers WHERE id = :id LIMIT 1")
+    fun getCustomerWithDetails(id: Long): Flow<CustomerWithDetails?>
+
+    @androidx.room.Transaction
+    @Query("SELECT * FROM customers WHERE id = :id LIMIT 1")
+    suspend fun getCustomerWithDetailsSync(id: Long): CustomerWithDetails?
 
     @Query("""
         SELECT * FROM customers 

@@ -204,8 +204,40 @@ class MainViewModel(
 
     fun setAppLanguage(language: com.example.domain.util.AppLanguage) {
         viewModelScope.launch {
+            appPreferences.setAppLanguage(language.code)
             val current = companyProfile.value
             repository.updateCompanyProfile(current.copy(appLanguage = language.code))
+        }
+    }
+
+    fun setInitialLanguageSelected(language: com.example.domain.util.AppLanguage) {
+        viewModelScope.launch {
+            appPreferences.setAppLanguage(language.code)
+            appPreferences.setHasSelectedInitialLanguage(true)
+            val current = companyProfile.value
+            repository.updateCompanyProfile(current.copy(appLanguage = language.code))
+        }
+    }
+
+    fun dismissInitialLanguageDialog() {
+        viewModelScope.launch {
+            appPreferences.setHasSelectedInitialLanguage(true)
+        }
+    }
+
+    fun setCompanyLogo(logoUri: String) {
+        viewModelScope.launch {
+            appPreferences.setCompanyLogoUri(logoUri)
+            val current = companyProfile.value
+            repository.updateCompanyProfile(current.copy(logoUri = logoUri))
+        }
+    }
+
+    fun clearCompanyLogo() {
+        viewModelScope.launch {
+            appPreferences.clearCompanyLogo()
+            val current = companyProfile.value
+            repository.updateCompanyProfile(current.copy(logoUri = ""))
         }
     }
 
@@ -290,6 +322,8 @@ class MainViewModel(
 
     fun updateCompanyProfile(profile: CompanyProfile) {
         viewModelScope.launch {
+            appPreferences.setAppLanguage(profile.appLanguage)
+            appPreferences.setCompanyLogoUri(profile.logoUri)
             repository.updateCompanyProfile(profile)
         }
     }
@@ -349,7 +383,10 @@ class MainViewModel(
         fun provideFactory(): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return MainViewModel(TecnoOrdemApp.instance.repository) as T
+                return MainViewModel(
+                    repository = TecnoOrdemApp.instance.repository,
+                    appPreferences = TecnoOrdemApp.instance.preferencesDataStore
+                ) as T
             }
         }
     }

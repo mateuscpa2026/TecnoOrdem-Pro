@@ -526,8 +526,6 @@ fun CompanySettingsScreen(
                     )
                     viewModel.updateCompanyProfile(updated)
                     viewModel.setAppLanguage(selectedLanguage)
-                    val prefs = context.getSharedPreferences("tecno_ordem_app_prefs", android.content.Context.MODE_PRIVATE)
-                    prefs.edit().putBoolean("has_selected_lang_v4", true).putString("app_language", selectedLanguage.code).apply()
                     Toast.makeText(context, AppStrings.get("company_saved", selectedLanguage), Toast.LENGTH_SHORT).show()
                 },
                 shape = RoundedCornerShape(10.dp),

@@ -10,6 +10,7 @@ import com.example.data.dao.WarrantyDao
 import com.example.data.dao.WorkOrderDao
 import com.example.data.model.CompanyProfile
 import com.example.data.model.Customer
+import com.example.data.model.CustomerWithDetails
 import com.example.data.model.Equipment
 import com.example.data.model.FinancialTransaction
 import com.example.data.model.InventoryPart
@@ -45,6 +46,8 @@ class TecnoOrdemRepository(
     fun searchCustomers(query: String): Flow<List<Customer>> = customerDao.searchCustomers(query)
     fun getCustomerById(id: Long): Flow<Customer?> = customerDao.getCustomerById(id)
     suspend fun getCustomerByIdSync(id: Long): Customer? = customerDao.getCustomerByIdSync(id)
+    fun getCustomerWithDetails(id: Long): Flow<CustomerWithDetails?> = customerDao.getCustomerWithDetails(id)
+    suspend fun getCustomerWithDetailsSync(id: Long): CustomerWithDetails? = customerDao.getCustomerWithDetailsSync(id)
     suspend fun saveCustomer(customer: Customer): Long = customerDao.insertCustomer(customer)
     suspend fun updateCustomer(customer: Customer) = customerDao.updateCustomer(customer)
     suspend fun deleteCustomer(customer: Customer) = customerDao.deleteCustomerCascade(customer.id)

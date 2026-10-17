@@ -113,15 +113,12 @@ fun MainApp(
     var selectedOrderForDetail by remember { mutableStateOf<WorkOrderWithDetails?>(null) }
     var showNewOrderDialog by remember { mutableStateOf(false) }
 
-    val context = LocalContext.current
-    val prefs = remember { context.getSharedPreferences("tecno_ordem_app_prefs", Context.MODE_PRIVATE) }
-    var hasSelectedInitialLanguage by remember {
-        mutableStateOf(prefs.getBoolean("has_selected_lang_v4", false))
-    }
-    var showLanguageDialog by remember { mutableStateOf(!hasSelectedInitialLanguage) }
-
+    val userPreferences by viewModel.userPreferences.collectAsState()
     val companyProfile by viewModel.companyProfile.collectAsState()
     val appLang = remember(companyProfile.appLanguage) { AppLanguage.fromCode(companyProfile.appLanguage) }
+
+    var showManualLanguageDialog by remember { mutableStateOf(false) }
+    val showInitialLanguageDialog = !userPreferences.hasSelectedInitialLanguage
 
     // Handle Android system back button: return to Dashboard tab if on another tab
     BackHandler(enabled = currentTab != AppTab.DASHBOARD) {
@@ -159,7 +156,7 @@ fun MainApp(
                         Surface(
                             shape = RoundedCornerShape(16.dp),
                             color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.7f),
-                            onClick = { showLanguageDialog = true },
+                            onClick = { showManualLanguageDialog = true },
                             modifier = Modifier
                                 .padding(end = 4.dp)
                                 .testTag("action_language_select")
@@ -271,7 +268,7 @@ fun MainApp(
                         onNavigateToWarranties = { currentTab = AppTab.WARRANTIES },
                         onNewOrderClick = { showNewOrderDialog = true },
                         onSelectOrder = { order -> selectedOrderForDetail = order },
-                        onOpenLanguagePicker = { showLanguageDialog = true }
+                        onOpenLanguagePicker = { showManualLanguageDialog = true }
                     )
 
                     AppTab.ORDERS -> OrdersScreen(
@@ -324,19 +321,17 @@ fun MainApp(
             )
         }
 
-        // Language Selection Dialog (First Launch & Header Action)
-        if (showLanguageDialog) {
+        // Language Selection Dialog (First Launch & Header Action backed by DataStore)
+        if (showInitialLanguageDialog || showManualLanguageDialog) {
             LanguagePickerDialog(
                 currentLanguage = appLang,
                 onLanguageSelected = { selectedLang ->
-                    viewModel.setAppLanguage(selectedLang)
-                    prefs.edit().putBoolean("has_selected_lang_v4", true).apply()
-                    hasSelectedInitialLanguage = true
-                    showLanguageDialog = false
+                    viewModel.setInitialLanguageSelected(selectedLang)
+                    showManualLanguageDialog = false
                 },
                 onDismiss = {
-                    showLanguageDialog = false
-                    prefs.edit().putBoolean("has_selected_lang_v4", true).apply()
+                    viewModel.dismissInitialLanguageDialog()
+                    showManualLanguageDialog = false
                 }
             )
         }
