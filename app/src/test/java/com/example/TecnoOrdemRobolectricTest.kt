@@ -268,4 +268,35 @@ class TecnoOrdemRobolectricTest {
         val customerAfterDelete = repository.getCustomerByIdSync(customerId)
         assertEquals(null, customerAfterDelete)
     }
+
+    @Test
+    fun testWorkOrderPhotographicEvidencePersistence() = runBlocking {
+        val custId = repository.saveCustomer(
+            Customer(name = "Mariana Lopes", phone = "(31) 98888-7777")
+        )
+        val equipId = repository.saveEquipment(
+            Equipment(customerId = custId, brand = "Apple", model = "iPhone 15")
+        )
+
+        val order = WorkOrder(
+            orderNumber = 3001,
+            customerId = custId,
+            equipmentId = equipId,
+            status = OrderStatus.OPEN,
+            reportedDefect = "Tampa traseira trincada",
+            photoBeforeUri = "file:///data/user/0/os_photos/before_iph15.jpg",
+            photoBeforeNotes = "Trincas profundas no vidro traseiro e aro amassado",
+            photoAfterUri = "file:///data/user/0/os_photos/after_iph15.jpg",
+            photoAfterNotes = "Vidro e aro trocados, 100% alinhado e vedado"
+        )
+        val orderId = repository.saveWorkOrder(order)
+        assertTrue(orderId > 0)
+
+        val retrieved = repository.getOrderByIdSync(orderId)
+        assertNotNull(retrieved)
+        assertEquals("file:///data/user/0/os_photos/before_iph15.jpg", retrieved?.photoBeforeUri)
+        assertEquals("Trincas profundas no vidro traseiro e aro amassado", retrieved?.photoBeforeNotes)
+        assertEquals("file:///data/user/0/os_photos/after_iph15.jpg", retrieved?.photoAfterUri)
+        assertEquals("Vidro e aro trocados, 100% alinhado e vedado", retrieved?.photoAfterNotes)
+    }
 }

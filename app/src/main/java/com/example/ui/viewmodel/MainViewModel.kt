@@ -261,6 +261,13 @@ class MainViewModel(
         }
     }
 
+    fun updateWorkOrder(order: WorkOrder, notes: String = "", onDone: () -> Unit = {}) {
+        viewModelScope.launch {
+            repository.saveWorkOrder(order, notes)
+            onDone()
+        }
+    }
+
     fun updateOrderStatus(
         orderId: Long,
         newStatus: OrderStatus,

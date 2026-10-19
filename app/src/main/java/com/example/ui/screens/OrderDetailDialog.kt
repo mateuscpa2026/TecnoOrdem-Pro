@@ -64,6 +64,7 @@ import com.example.data.model.WorkOrderWithDetails
 import com.example.domain.util.DocumentKind
 import com.example.domain.util.Formatters
 import com.example.ui.components.AutoFitText
+import com.example.ui.components.OrderPhotoCard
 import com.example.ui.components.OrderStatusBadge
 import com.example.ui.theme.BluePrimary
 import com.example.ui.theme.StatusCritical
@@ -82,6 +83,11 @@ fun OrderDetailDialog(
     var statusDropdownExpanded by remember { mutableStateOf(false) }
     var statusChangeNote by remember { mutableStateOf("") }
     var showDeleteConfirm by remember { mutableStateOf(false) }
+
+    var photoBefore by remember(item.workOrder.photoBeforeUri) { mutableStateOf(item.workOrder.photoBeforeUri) }
+    var photoBeforeNotes by remember(item.workOrder.photoBeforeNotes) { mutableStateOf(item.workOrder.photoBeforeNotes) }
+    var photoAfter by remember(item.workOrder.photoAfterUri) { mutableStateOf(item.workOrder.photoAfterUri) }
+    var photoAfterNotes by remember(item.workOrder.photoAfterNotes) { mutableStateOf(item.workOrder.photoAfterNotes) }
 
     Dialog(
         onDismissRequest = onDismiss,
@@ -281,6 +287,79 @@ fun OrderDetailDialog(
                             Text(
                                 text = "${item.workOrder.servicesDescription}\n${item.workOrder.partsDescription}".trim().ifEmpty { "Manutenção geral" },
                                 style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                    }
+
+                    // Photographic Inspection (Before & After Native Camera / Gallery)
+                    Card(
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth().testTag("card_photo_inspection")
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(14.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "LAUDO FOTOGRÁFICO DO APARELHO",
+                                    style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Surface(
+                                    shape = RoundedCornerShape(12.dp),
+                                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.6f)
+                                ) {
+                                    Text(
+                                        text = "Antes & Depois",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                    )
+                                }
+                            }
+
+                            // 1. Photo Before (Check-in / Reported Defect)
+                            OrderPhotoCard(
+                                title = "1. Foto de Entrada (Antes / Defeito)",
+                                subtitle = "Estado físico do aparelho recebido na assistência",
+                                photoUriString = photoBefore,
+                                notes = photoBeforeNotes,
+                                onPhotoChanged = { newUri ->
+                                    photoBefore = newUri
+                                    val updated = item.workOrder.copy(photoBeforeUri = newUri, photoBeforeNotes = photoBeforeNotes)
+                                    viewModel.updateWorkOrder(updated)
+                                },
+                                onNotesChanged = { newNotes ->
+                                    photoBeforeNotes = newNotes
+                                    val updated = item.workOrder.copy(photoBeforeNotes = newNotes)
+                                    viewModel.updateWorkOrder(updated)
+                                },
+                                testTagPrefix = "detail_photo_before"
+                            )
+
+                            // 2. Photo After (Delivered / Ready)
+                            OrderPhotoCard(
+                                title = "2. Foto de Saída (Depois / Reparado)",
+                                subtitle = "Aparelho reparado, testado e pronto para entrega",
+                                photoUriString = photoAfter,
+                                notes = photoAfterNotes,
+                                onPhotoChanged = { newUri ->
+                                    photoAfter = newUri
+                                    val updated = item.workOrder.copy(photoAfterUri = newUri, photoAfterNotes = photoAfterNotes)
+                                    viewModel.updateWorkOrder(updated)
+                                },
+                                onNotesChanged = { newNotes ->
+                                    photoAfterNotes = newNotes
+                                    val updated = item.workOrder.copy(photoAfterNotes = newNotes)
+                                    viewModel.updateWorkOrder(updated)
+                                },
+                                testTagPrefix = "detail_photo_after"
                             )
                         }
                     }

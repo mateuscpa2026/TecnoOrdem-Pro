@@ -52,6 +52,7 @@ import com.example.data.model.Equipment
 import com.example.data.model.EquipmentType
 import com.example.data.model.OrderStatus
 import com.example.data.model.WorkOrder
+import com.example.ui.components.OrderPhotoCard
 import com.example.ui.viewmodel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -79,6 +80,9 @@ fun NewOrderDialog(
     var equipSerialOrImei by remember { mutableStateOf("") }
     var equipCondition by remember { mutableStateOf("Sinais normais de uso") }
     var equipAccessories by remember { mutableStateOf("Aparelho sem acessórios") }
+
+    var photoBeforeUri by remember { mutableStateOf("") }
+    var photoBeforeNotes by remember { mutableStateOf("") }
 
     var reportedDefect by remember { mutableStateOf("") }
     var servicesDescription by remember { mutableStateOf("") }
@@ -281,6 +285,18 @@ fun NewOrderDialog(
                         modifier = Modifier.fillMaxWidth()
                     )
 
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    OrderPhotoCard(
+                        title = "Foto do Aparelho na Entrada (Antes)",
+                        subtitle = "Tire uma foto do estado físico do aparelho com a câmera nativa ou anexe da galeria",
+                        photoUriString = photoBeforeUri,
+                        notes = photoBeforeNotes,
+                        onPhotoChanged = { photoBeforeUri = it },
+                        onNotesChanged = { photoBeforeNotes = it },
+                        testTagPrefix = "new_order_photo_before"
+                    )
+
                     Divider(modifier = Modifier.padding(vertical = 4.dp))
 
                     // Defect & Technical Info
@@ -416,7 +432,9 @@ fun NewOrderDialog(
                                         partsPrice = parts,
                                         discountAmount = discount,
                                         downPaymentAmount = downPayment,
-                                        assignedTechnician = technician
+                                        assignedTechnician = technician,
+                                        photoBeforeUri = photoBeforeUri,
+                                        photoBeforeNotes = photoBeforeNotes
                                     )
                                     viewModel.saveWorkOrder(order) {
                                         Toast.makeText(context, "Ordem de serviço aberta com sucesso!", Toast.LENGTH_LONG).show()
@@ -453,7 +471,9 @@ fun NewOrderDialog(
                                             partsPrice = parts,
                                             discountAmount = discount,
                                             downPaymentAmount = downPayment,
-                                            assignedTechnician = technician
+                                            assignedTechnician = technician,
+                                            photoBeforeUri = photoBeforeUri,
+                                            photoBeforeNotes = photoBeforeNotes
                                         )
                                         viewModel.saveWorkOrder(order) {
                                             Toast.makeText(context, "Ordem de serviço aberta com sucesso!", Toast.LENGTH_LONG).show()

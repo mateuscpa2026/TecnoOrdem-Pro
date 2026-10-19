@@ -167,6 +167,17 @@ object PdfDocumentGenerator {
             paintText.isFakeBoldText = false
             canvas.drawText(equipment?.entryCondition ?: "Sinais normais de uso", left + 65f, startY + 44f, paintText)
 
+            val photoStatus = when {
+                workOrder.photoBeforeUri.isNotBlank() && workOrder.photoAfterUri.isNotBlank() -> "Fotos Antes e Depois registradas"
+                workOrder.photoBeforeUri.isNotBlank() -> "Foto de Entrada (Antes) registrada"
+                workOrder.photoAfterUri.isNotBlank() -> "Foto de Saída (Depois) registrada"
+                else -> "Sem fotos anexadas"
+            }
+            paintText.isFakeBoldText = true
+            canvas.drawText("Fotos OS:", left + 300f, startY + 44f, paintText)
+            paintText.isFakeBoldText = false
+            canvas.drawText(photoStatus, left + 350f, startY + 44f, paintText)
+
             54f
         }
 

@@ -52,5 +52,9 @@ data class WorkOrder(
     val internalNotes: String = "",
     val termsAccepted: Boolean = true,
     val approvalMethod: String = "Pendente",
-    val approvalTimestamp: Long? = null
+    val approvalTimestamp: Long? = null,
+    val photoBeforeUri: String = "",
+    val photoAfterUri: String = "",
+    val photoBeforeNotes: String = "",
+    val photoAfterNotes: String = ""
 )
